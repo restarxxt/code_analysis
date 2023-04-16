@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Download File Share:</h1>
+  {% if error %}
+    <div>{{ error }}</div>
+  {% endif %}
+  <h2>{{ file_share.name }}</h2>
+  <p>{{ file_share.description }}</p>
+  <p>Uploaded By: {{ file_share.uploaded_by }}</p>
+  <p>File Name: {{ file_share.file_name }}</p>
+  <p>File Type: {{ file_share.file_type }}</p>
+  <p>File Size: {{ file_share.file_size }}</p>
+  <p><a href="{{ url_for('download', file_share_id=file_shares[0]) }}">Download File</a></p>
+{% endblock %}

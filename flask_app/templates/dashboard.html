@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Welcome to your Dashboard, {{ user[1] }}</h2>
+    <p>Email: {{ user[2] }}</p>
+    {% if user[4]==0  %}
+    <h3>File Shares</h3>
+    <ul>
+        <li><a href="{{ url_for('file_shares') }}">List all available file shares</a></li>
+        <li><a href="{{ url_for('create_file_share') }}">Create a new file share & upload a file to it</a></li>
+    </ul>
+    {% endif %}
+    {% if user[4]==1  %}
+    <h4>Run Command</h4>
+    <form action="{{ url_for('dashboard') }}" method="post">
+      <label for="command">Command:</label>
+      <input type="text" name="command" id="command">
+      <button type="submit">Run</button>
+    </form>
+    {% if output %}
+      <h5>Output:</h5>
+      <pre>{{ output }}</pre>
+    {% endif %}
+    {% endif %}
+
+    <a href="{{ url_for('logout') }}">Log Out</a>
+
+{% endblock %}

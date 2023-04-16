@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Comments:</h1>
+  <table>
+    <tr>
+      <th>Author</th>
+      <th>Comment</th>
+      <th>Date</th>
+    </tr>
+    <tr>
+      {% for file_share in file_shares %}
+      <td>{{ user[1] }}</td>
+      {% endfor %}
+      {% for comment in comments %}
+      <td>{{ comment[3] }}</td>
+      <td>{{ comment[4] }}</td>
+      {% endfor %}
+    </tr>
+  </table>
+  <h2>Leave a Comment</h2>
+  <form method="POST">
+    <div class="form-group">
+      <label for="comment">Comment:</label>
+      <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Available File Shares:</h1>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Download Link</th>
+      <th>Comment Section</th>
+    </tr>
+    {% for file_share in file_shares %}
+    <tr>
+      <td>{{ file_share[1] }}</td>
+      <td><a href="{{ url_for('download_file', file_share_id=file_share[0]) }}">Download</a></td>
+      <td><a href="{{ url_for('file_share_detail', file_share_id=file_share[0]) }}">Leave a comment</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
